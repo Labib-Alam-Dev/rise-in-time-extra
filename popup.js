@@ -973,65 +973,106 @@ document.addEventListener("DOMContentLoaded", () => {
 //________________________________________________________________________________book___________________________________________________________________________________\\
 
 document.getElementById("book_drop").addEventListener("click", () => {
-    if (book_visible) {
-        book_visible = false;
-        document.getElementById("book").style.display = "none";
-    } else {
-        book_visible = true;
-        document.getElementById("book").style.display = "block";
-    }
+	if (book_visible) {
+		book_visible = false;
+		document.getElementById("book").style.display = "none";
+	} else {
+		book_visible = true;
+		document.getElementById("book").style.display = "block";
+	}
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const book_ = document.getElementById("book_active");
-    
-    if (localStorage.getItem("book_state") === "true") {
-        book_.checked = true;
-    }
+	const book_ = document.getElementById("book_active");
 
-    book_.addEventListener("change", () => {
-        const isChecked = book_.checked;
-        localStorage.setItem("book_state", isChecked);
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            chrome.tabs.sendMessage(tabs[0].id, {
-                book: isChecked,
-            });
-        });
-    });
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, { book: book_.checked });
-    });
+	if (localStorage.getItem("book_state") === "true") {
+		book_.checked = true;
+	}
+
+	book_.addEventListener("change", () => {
+		const isChecked = book_.checked;
+		localStorage.setItem("book_state", isChecked);
+		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+			chrome.tabs.sendMessage(tabs[0].id, {
+				book: isChecked,
+			});
+		});
+	});
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.tabs.sendMessage(tabs[0].id, { book: book_.checked });
+	});
 });
 
 //________________________________________________________________________________rank___________________________________________________________________________________\\
 
 document.getElementById("rank_drop").addEventListener("click", () => {
-    if (rank_visible) {
-        rank_visible = false;
-        document.getElementById("rank").style.display = "none";
-    } else {
-        rank_visible = true;
-        document.getElementById("rank").style.display = "block";
-    }
+	if (rank_visible) {
+		rank_visible = false;
+		document.getElementById("rank").style.display = "none";
+	} else {
+		rank_visible = true;
+		document.getElementById("rank").style.display = "block";
+	}
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const rank_ = document.getElementById("rank_active");
-    
-    if (localStorage.getItem("rank_state") === "true") {
-        rank_.checked = true;
-    }
+	const rank_ = document.getElementById("rank_active");
 
-    rank_.addEventListener("change", () => {
-        const isChecked = rank_.checked;
-        localStorage.setItem("rank_state", isChecked);
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            chrome.tabs.sendMessage(tabs[0].id, {
-                rank: isChecked,
-            });
-        });
-    });
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, { rank: rank_.checked });
-    });
+	if (localStorage.getItem("rank_state") === "true") {
+		rank_.checked = true;
+	}
+
+	rank_.addEventListener("change", () => {
+		const isChecked = rank_.checked;
+		localStorage.setItem("rank_state", isChecked);
+		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+			chrome.tabs.sendMessage(tabs[0].id, {
+				rank: isChecked,
+			});
+		});
+	});
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.tabs.sendMessage(tabs[0].id, { rank: rank_.checked });
+	});
+});
+
+//________________________________________________________________________________skill_tree___________________________________________________________________________________\\
+
+document.addEventListener('DOMContentLoaded', () => {
+	const buttons = document.querySelectorAll('.skill-btn');
+
+	// Restore previously‑active skills
+	chrome.storage.local.get({ activeSkills: [] }, ({ activeSkills }) => {
+		buttons.forEach(btn => {
+			const id = Number(btn.dataset.skillId);
+			if (activeSkills.includes(id)) {
+				btn.classList.add('active');
+			}
+		});
+	});
+
+	//  Wire up click handlers
+	buttons.forEach(btn => {
+		chrome.storage.local.get(null, (res) => {
+			console.log('Current storage:', res);
+		});
+
+		btn.addEventListener('click', () => {
+			const id = Number(btn.dataset.skillId);
+			btn.classList.toggle('active');
+
+			// Read, update, then write the list of active IDs
+			chrome.storage.local.get({ activeSkills: [] }, ({ activeSkills }) => {
+				let next = [...activeSkills];
+
+				if (btn.classList.contains('active')) {
+					if (!next.includes(id)) next.push(id);   // add
+				} else {
+					next = next.filter(x => x !== id);       // remove
+				}
+
+				chrome.storage.local.set({ activeSkills: next });
+			});
+		});
+	});
 });

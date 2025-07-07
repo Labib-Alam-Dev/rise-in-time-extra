@@ -159,7 +159,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 	if (_pfp === "true" || _pfp === true) {
 		if (request.action === "updateClass") {
 			const mainDiv = document.querySelector("div[data-v-06630c0a]");
-			
+
 			if (mainDiv) {
 				const profileIconDiv = mainDiv.querySelector(".profile-icon");
 				const generalInfoSectionDiv = mainDiv.querySelector(
@@ -481,7 +481,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 // Function to handle the received data-values
 function handleImageDataValues(dataValues) {
 	// Example: Log the data-values or perform actions with them
-	dataValues.forEach((value) => {});
+	dataValues.forEach((value) => { });
 }
 
 // Listen for messages from popup.js
@@ -608,62 +608,116 @@ function vulnerable() {
 }
 //---------------------------------------------rank-player---------------------------------------------\\
 function rank() {
-    if (!rankEnabled) return;
+	if (!rankEnabled) return;
 
-    // Select the element with the "title" class
-    const titleElement = document.querySelector(".title");
-    
-    // Exit early if no title element found
-    if (!titleElement) return;
+	// Select the element with the "title" class
+	const titleElement = document.querySelector(".title");
 
-    // Check if a <p> with the "rank" class already exists after the title element
-    const existingRankElement = titleElement.nextElementSibling;
-    if (existingRankElement && existingRankElement.classList.contains("rank")) {
-        return;
-    }
+	// Exit early if no title element found
+	if (!titleElement) return;
 
-    // Create the new <p> element
-    const newElement = document.createElement("p");
-    newElement.className = "rank";
+	// Check if a <p> with the "rank" class already exists after the title element
+	const existingRankElement = titleElement.nextElementSibling;
+	if (existingRankElement && existingRankElement.classList.contains("rank")) {
+		return;
+	}
 
-    // Switch based on title content
-    switch (titleElement.textContent.trim()) {
-        case "Fexeek":
-            newElement.innerHTML = '<br><span style="background-color: green">​ modder ​</span>  <span style="background-color: yellow; color: black;">​ Regional Master ​</span>  <span style="background-color: orange;">​ Dominion pro ​</span>';
-            break;
-        case "Sherovec":
-            newElement.innerHTML = '<br><span style="background-color: purple">​ G.O.A.T ​</span>  <span style="background-color: red">​ Grand Master ​</span>  <span style="background-color: red">​ Dominion Master ​</span> <br> <br> <span style="background-color: black">​  Dragon Hunter ​</span>  <span style="background-color: black">​ Quickstab King  ​</span>';
-            break;
-        case "GameCoder":
-            newElement.innerHTML = '<br><span style="background-color: green">​ modder ​</span>  <span style="background-color: red">​ Youtube ​</span>  <span style="background-color: orange">​ Master ​</span>';
-            break;
-        case "AskAlice":
-            newElement.innerHTML = '<br><span style="background-color: blue">​ Dev ​</span>  <span style="background-color: red">​ Grand Master ​</span>  <span style="background-color: red">​ Dominion Master ​</span>';
-            break;
-        case "Hitesh":
-            newElement.innerHTML = '<br><span style="background-color: red">​ Dominion Master ​</span>  <span style="background-color: orange">​ Master ​</span>';
-            break;
-        case "Ratte":
-            newElement.innerHTML = '<br>  <span style="background-color: red">​ Grand Master ​</span>  <span style="background-color: red">​ Dominion Master ​</span>';
-            break;
-        case "m453":
-            newElement.innerHTML = '<br>  <span style="background-color: red">​ Grand Master ​</span>  <span style="background-color: orange">​ Dominion pro ​</span>';
-            break;
-        case "memememe":
-            newElement.innerHTML = '<br>  <span style="background-color: red">​ Grand Master ​</span>  <span style="background-color: orange">​ Dominion pro ​</span>';
-            break;
-        case "Zahikusa":
-        case "Ibexor":
-        case "Ramsus":
-            newElement.innerHTML = '<br><span style="background-color: blue">​ Dev ​</span>  <span style="background-color: red">​ Grand Master ​</span>  <span style="background-color: orange">​ Dominion pro ​</span>';
-            break;
-        default:
-            return; // Don't add rank for unrecognized names
-    }
+	// Create the new <p> element
+	const newElement = document.createElement("p");
+	newElement.className = "rank";
 
-    // Insert the new element after the title element
-    titleElement.insertAdjacentElement("afterend", newElement);
+	// Switch based on title content
+	switch (titleElement.textContent.trim()) {
+		case "Fexeek":
+			newElement.innerHTML = '<br><span style="background-color: green">​ modder ​</span>  <span style="background-color: yellow; color: black;">​ Regional Master ​</span>  <span style="background-color: orange;">​ Dominion pro ​</span>';
+			break;
+		case "Sherovec":
+			newElement.innerHTML = '<br><span style="background-color: purple">​ G.O.A.T ​</span>  <span style="background-color: red">​ Grand Master ​</span>  <span style="background-color: red">​ Dominion Master ​</span> <br> <br> <span style="background-color: black">​  Dragon Hunter ​</span>  <span style="background-color: black">​ Quickstab King  ​</span>';
+			break;
+		case "GameCoder":
+			newElement.innerHTML = '<br><span style="background-color: green">​ modder ​</span>  <span style="background-color: red">​ Youtube ​</span>  <span style="background-color: orange">​ Master ​</span>';
+			break;
+		case "AskAlice":
+			newElement.innerHTML = '<br><span style="background-color: blue">​ Dev ​</span>  <span style="background-color: red">​ Grand Master ​</span>  <span style="background-color: red">​ Dominion Master ​</span>';
+			break;
+		case "Hitesh":
+			newElement.innerHTML = '<br><span style="background-color: red">​ Dominion Master ​</span>  <span style="background-color: orange">​ Master ​</span>';
+			break;
+		case "Ratte":
+			newElement.innerHTML = '<br>  <span style="background-color: red">​ Grand Master ​</span>  <span style="background-color: red">​ Dominion Master ​</span>';
+			break;
+		case "m453":
+			newElement.innerHTML = '<br>  <span style="background-color: red">​ Grand Master ​</span>  <span style="background-color: orange">​ Dominion pro ​</span>';
+			break;
+		case "memememe":
+			newElement.innerHTML = '<br>  <span style="background-color: red">​ Grand Master ​</span>  <span style="background-color: orange">​ Dominion pro ​</span>';
+			break;
+		case "Zahikusa":
+		case "Ibexor":
+		case "Ramsus":
+			newElement.innerHTML = '<br><span style="background-color: blue">​ Dev ​</span>  <span style="background-color: red">​ Grand Master ​</span>  <span style="background-color: orange">​ Dominion pro ​</span>';
+			break;
+		case "krishn":
+			newElement.innerHTML = '<br><span style="background-color: orange">​ Master ​</span> <span style="background-color: orange">​ Dominion pro ​</span>';
+			break;
+		default:
+			return; // Don't add rank for unrecognized names
+	}
+
+	// Insert the new element after the title element
+	titleElement.insertAdjacentElement("afterend", newElement);
 }
+
+//-----------------------------------------skilltree------------------------------------------\\
+// Wait for the DOM to be ready
+function insertSkillTreeButton() {
+	function getActiveSkillIdsFromStorage(callback) {
+		chrome.storage.local.get({ activeSkills: [] }, (res) => {
+			callback(res.activeSkills);
+		});
+	}
+
+	// Monitor the DOM for the Skill Tree button
+	const observer = new MutationObserver((_, obs) => {
+		const el = [...document.querySelectorAll("div.switch-element.active")]
+			.find(div => div.textContent.trim() === "Skill Tree");
+
+		if (el) {
+			obs.disconnect();
+			addPlusButton(el);
+		}
+	});
+	observer.observe(document.documentElement, { childList: true, subtree: true });
+
+	function addPlusButton(container) {
+		if (container.querySelector("button.ri-skilltree-plus")) return;
+
+		const btn = document.createElement("button");
+		btn.className = "ri-skilltree-plus";
+		btn.textContent = "+";
+		btn.style.marginLeft = "8px";
+		btn.style.cursor = "pointer";
+
+		btn.addEventListener("click", () => {
+			getActiveSkillIdsFromStorage((activeIds) => {
+				if (Array.isArray(activeIds) && activeIds.length > 0) {
+					window.postMessage({
+						type: "CALL_SKILLTREE",
+						ids: activeIds
+					}, "*");
+				} else {
+					console.warn("No active skills selected.");
+				}
+			});
+		});
+
+
+		container.appendChild(btn);
+	}
+}
+
+
+
 //---------------------------------------------run---------------------------------------------\\
 
 injectSummonAllScript();
@@ -685,7 +739,8 @@ function runALL() {
 		vulnerable();
 	}
 	if (rankEnabled) rank();
-		//console.log("update function called");
+	insertSkillTreeButton();
+	//console.log("update function called");
 }
 setInterval(runALL, 200);
 
@@ -693,20 +748,25 @@ let bookEnabled = undefined;
 let rankEnabled = undefined;
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.book !== undefined) {
-        bookEnabled = request.book;
-        window.postMessage({ type: "book", book: request.book }, "*");
-    }
-    if (request.rank !== undefined) {
-        rankEnabled = request.rank;
-    }
+	if (request.book !== undefined) {
+		bookEnabled = request.book;
+		window.postMessage({ type: "book", book: request.book }, "*");
+	}
+	if (request.rank !== undefined) {
+		rankEnabled = request.rank;
+	}
 });
 
 // Add this near the end of the file
 // Listen for guide URL requests from injectedSocketScript
 window.addEventListener("message", (event) => {
-    if (event.data.type === "GET_GUIDE_URL") {
-        const guideUrl = chrome.runtime.getURL('guide.html');
-        window.postMessage({ type: "GUIDE_URL_RESPONSE", url: guideUrl }, "*");
-    }
+	if (event.data.type === "GET_GUIDE_URL") {
+		const guideUrl = chrome.runtime.getURL('guide.html');
+		window.postMessage({ type: "GUIDE_URL_RESPONSE", url: guideUrl }, "*");
+	}
 });
+
+
+
+
+

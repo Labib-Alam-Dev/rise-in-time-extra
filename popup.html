@@ -478,7 +478,51 @@
             </label>
             <br /><br /><br />
         </div>
+		<br /><br />
+        <div id="skill_drop" class="drop_down">
+            <h3>
+                Player Rank Display <b style="font-size: x-large"> ↓</b>
+                <span class="rank">(Visual)</span>
+            </h3>
+        </div>
+        <div id="skill" style="" class="menu">
+            <br />
+            <span>on/off</span>
+            <label class="switch">
+                <input type="checkbox" id="skill_active" />
+                <span class="slider round"></span>
+            </label>
+            <div class="skill-buttons">
+                <!-- Attack Skills -->
+                <button class="skill-btn" data-skill-id="0" data-type="sword">⚔️ Battle Force</button>
+                <button class="skill-btn" data-skill-id="1" data-type="sword">⚔️ Strength Boost</button>
+                <button class="skill-btn" data-skill-id="3" data-type="sword">⚔️ Strength Boost</button>
+                <button class="skill-btn" data-skill-id="2" data-type="sword">⚔️ Speed Pill</button>
+                <button class="skill-btn" data-skill-id="4" data-type="sword">⚔️ Magic Sleep</button>
+                
+                <!-- Defense Skills -->
+                <button class="skill-btn" data-skill-id="10" data-type="shield">🛡️ Wall</button>
+                <button class="skill-btn" data-skill-id="11" data-type="shield">🛡️ Defense Boost</button>
+                <button class="skill-btn" data-skill-id="13" data-type="shield">🛡️ Defense Boost</button>
+                <button class="skill-btn" data-skill-id="15" data-type="shield">🛡️ Defense Boost</button>
+                <button class="skill-btn" data-skill-id="12" data-type="shield">🛡️ Healing</button>
+                <button class="skill-btn" data-skill-id="14" data-type="shield">🛡️ Healing</button>
+                <button class="skill-btn" data-skill-id="16" data-type="shield">🛡️ Healing</button>
+                <button class="skill-btn" data-skill-id="17" data-type="shield">🛡️ Modified Plague</button>
+                
+                <!-- Utility Skills -->
+                <button class="skill-btn" data-skill-id="20" data-type="potion">⚗️ Soul Mage</button>
+                <button class="skill-btn" data-skill-id="21" data-type="potion">⚗️ Recruitment Boost</button>
+                <button class="skill-btn" data-skill-id="22" data-type="potion">⚗️ Recruitment Boost</button>
+                <button class="skill-btn" data-skill-id="23" data-type="potion">⚗️ Recruitment Boost</button>
+                <button class="skill-btn" data-skill-id="24" data-type="potion">⚗️ Recruitment Boost</button>
+                <button class="skill-btn" data-skill-id="25" data-type="potion">⚗️ Recruitment Boost</button>
+                <button class="skill-btn" data-skill-id="26" data-type="potion">⚗️ Spotters</button>
+            </div>
+            <br /><br /><br />
+        </div>
         <br />
+		
         <script src="popup.js"></script>
 	</body>
 </html>

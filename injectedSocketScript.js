@@ -48,13 +48,14 @@ function summonAllMain() {
 				if (field.nature !== "portal") {
 					regionView = false
 					currentIslandID = field.islandIndex
-				}else{
-				currentRegion = field.region
-				if (regionView!==false){
-					regionView = true
+				} else {
+					currentRegion = field.region
+					if (regionView !== false) {
+						regionView = true
+					}
 				}
-			}});
-			if (regionView===true) currentIslandID=0;
+			});
+			if (regionView === true) currentIslandID = 0;
 		});
 	}
 	// checking if current gamestate has any fieldwindow opened if so adding a button to summon troops, the div is needed for styling
@@ -603,7 +604,7 @@ function flashIslands(flashMap, flashRegion) {
 		}, 900);
 		//let Region = {islands : {}};
 		//console.log(island)
-		
+
 	}, 1000);
 	console.log(Region);
 }
@@ -614,59 +615,111 @@ function flashIslands(flashMap, flashRegion) {
 let bookEnabled = undefined;
 
 window.addEventListener("message", (event) => {
-    if (event.data.type === "book") {
-        bookEnabled = event.data.book;
-    }
+	if (event.data.type === "book") {
+		bookEnabled = event.data.book;
+	}
 });
 
 function addBookButton() {
-    if (!bookEnabled) return;
-    
-    const navElement = document.querySelector(".nav-element.nav-infos");
-    let bookButton = document.querySelector(".book-button");
+	if (!bookEnabled) return;
 
-    if (navElement && !bookButton) {
-        // Create a new button
-        const button = document.createElement("button");
-        button.textContent = "📖";
-        button.classList.add("book-button");
-        button.style.cursor = "pointer";
-        button.style.backgroundColor = "#000";
-        button.style.color = "white";
-        button.style.border = "2px solid white";
-        button.style.borderRadius = "5px";
-        button.style.fontSize = "25px";
-        button.style.marginLeft = "10px";
+	const navElement = document.querySelector(".nav-element.nav-infos");
+	let bookButton = document.querySelector(".book-button");
 
-        // Request guide URL through messaging
-        button.addEventListener("click", () => {
-            window.postMessage({ type: "GET_GUIDE_URL" }, "*");
-        });
+	if (navElement && !bookButton) {
+		// Create a new button
+		const button = document.createElement("button");
+		button.textContent = "📖";
+		button.classList.add("book-button");
+		button.style.cursor = "pointer";
+		button.style.backgroundColor = "#000";
+		button.style.color = "white";
+		button.style.border = "2px solid white";
+		button.style.borderRadius = "5px";
+		button.style.fontSize = "25px";
+		button.style.marginLeft = "10px";
 
-        navElement.appendChild(button);
-    }
+		// Request guide URL through messaging
+		button.addEventListener("click", () => {
+			window.postMessage({ type: "GET_GUIDE_URL" }, "*");
+		});
+
+		navElement.appendChild(button);
+	}
 }
 
 // Add URL response listener
 window.addEventListener("message", (event) => {
-    if (event.data.type === "GUIDE_URL_RESPONSE") {
-        window.open(event.data.url, '_blank');
+	if (event.data.type === "GUIDE_URL_RESPONSE") {
+		window.open(event.data.url, '_blank');
+	}
+});
+//---------------------------------------------auto skill tree---------------------------------------------\\
+function skilltree(skillId) {
+	// Check if the UPDATE_FIELD event listener is already registered
+	if (
+		!window.$socket._callbacks.$UPDATE_FIELD ||
+		window.$socket._callbacks.$UPDATE_FIELD.filter(
+			(f) => f.name === "updateFieldIndex"
+		).length === 0
+	) {
+		// Register the UPDATE_FIELD event listener
+		window.$socket.on("UPDATE_FIELD", function updateFieldIndex(e) {
+			currentFieldID = e.index; // Update the current field ID
+			currentIslandID = e.islandIndex; // Update the current island ID
+			currentOwner = e.owner; // Update the current owner
+		});
+	}
+	// Emit the PUT_SKILL event to activate the 20th skill
+	window.$socket.emit("PUT_SKILL", {
+		islandIndex: currentIslandID, // Current island ID
+		placeIndex: currentFieldID, // Current field ID
+		skillNumber: skillId // Skill number to activate
+	});
+}
+
+window.addEventListener("message", (event) => {
+  if (event.source !== window) return; // only accept messages from same page
+
+  const msg = event.data;
+  if (msg?.type === "CALL_SKILLTREE" && Array.isArray(msg.ids)) {
+    if (typeof window.skilltree === "function") {
+      activateSkillsSequentially(msg.ids);
+    } else {
+      console.warn("skilltree() not available on window");
     }
+  }
 });
 
+async function activateSkillsSequentially(ids) {
+  for (let i = 0; i < ids.length; i++) {
+    const id = ids[i];
+    try {
+      window.skilltree(id);
+      console.log(`skilltree(${id}) executed successfully`);
+    } catch (err) {
+      console.error(`skilltree(${id}) failed:`, err);
+    }
+    await delay(50);
+  }
+}
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 //---------------------------------------------run---------------------------------------------\\
 flashButton();
 function run() {
-    if (currentIslandID===0) {
-        flashButton();
-    } else {
-        let flashButton_ = document.querySelector(".flash-button");
-        if (flashButton_) {
-            flashButton_.remove();
-        }
-    }
-    summonAllMain();
-    reroll_button();
-    if (bookEnabled) addBookButton();
+	if (currentIslandID === 0) {
+		flashButton();
+	} else {
+		let flashButton_ = document.querySelector(".flash-button");
+		if (flashButton_) {
+			flashButton_.remove();
+		}
+	}
+	summonAllMain();
+	reroll_button();
+	if (bookEnabled) addBookButton();
 }
 setInterval(run, 200);
