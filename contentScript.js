@@ -1,3 +1,32 @@
+//---------------------------------------------settings button---------------------------------------------\\
+let ISpopup = false;
+function insertSettingsButton() {
+	const nav = document.querySelector('.nav-element.nav-infos');
+	if (!nav || nav.querySelector('.ri-settings-btn')) return;
+
+	const btn = document.createElement('button');
+	btn.className = 'ri-settings-btn';
+	btn.textContent = '⚙️';
+	btn.title = 'Open Extension Settings';
+	btn.style.marginLeft = '8px';
+	btn.style.cursor = 'pointer';
+	btn.style.background = 'none';
+	btn.style.border = 'none';
+	btn.style.fontSize = '18px';
+	btn.style.verticalAlign = 'middle';
+
+	btn.addEventListener('click', () => {
+		const url = chrome.runtime.getURL('popup.html');
+		window.open(url, '_blank');
+	});
+	chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+		if (request.popupAvailable == true) {
+			ISpopup = true;
+		}
+	});
+
+	nav.appendChild(btn);
+}
 //________________________________________________________________________________Artifact___________________________________________________________________________________\\
 // Apply the changes with stored settings or default values
 function applyChanges(
@@ -670,6 +699,14 @@ function rank() {
 
 //-----------------------------------------skilltree------------------------------------------\\
 // Wait for the DOM to be ready
+
+let skillEnabled = false;
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+	if (request.Skill !== undefined) {
+		skillEnabled = request.Skill === true || request.Skill === "true";
+	}
+});
+
 function insertSkillTreeButton() {
 	function getActiveSkillIdsFromStorage(callback) {
 		chrome.storage.local.get({ activeSkills: [] }, (res) => {
@@ -711,8 +748,9 @@ function insertSkillTreeButton() {
 			});
 		});
 
-
-		container.appendChild(btn);
+		if (skillEnabled) {
+			container.appendChild(btn);
+		}
 	}
 }
 
@@ -721,6 +759,7 @@ function insertSkillTreeButton() {
 //---------------------------------------------run---------------------------------------------\\
 
 injectSummonAllScript();
+
 function runALL() {
 	//flash();
 	if (_arti === "true" || _arti === true) {
@@ -740,6 +779,7 @@ function runALL() {
 	}
 	if (rankEnabled) rank();
 	insertSkillTreeButton();
+	if (ISpopup) insertSettingsButton();
 	//console.log("update function called");
 }
 setInterval(runALL, 200);

@@ -700,7 +700,7 @@ async function activateSkillsSequentially(ids) {
     } catch (err) {
       console.error(`skilltree(${id}) failed:`, err);
     }
-    await delay(50);
+    await delay(70);
   }
 }
 

@@ -2,31 +2,20 @@
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 	if (request.closePopup) {
+		chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+			chrome.tabs.sendMessage(tabs[0].id, { popupAvailable: true });
+		});
+
 		const Loading = document.getElementById("Loading");
 		Loading.style.display = "block";
 		// const menuItems = document.querySelectorAll('.menu');
 		// menuItems.forEach(item => { item.style.display = 'block'; });
 		setTimeout(() => {
+
 			window.close();
 		}, 300);
 	}
 });
-//chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-//	if (request.closePopup) {
-//		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-//			// Check if the active tab is the sender tab
-//			if (tabs[0].id === sender.tab.id) {
-//				const Loading = document.getElementById("Loading");
-//				Loading.style.display = "block";
-//				// const menuItems = document.querySelectorAll('.menu');
-//				// menuItems.forEach(item => { item.style.display = 'block'; });
-//				setTimeout(() => {
-//					window.close();
-//				}, 50);
-//			}
-//		});
-//	}
-//});
 
 //________________________________________________________________________________variables___________________________________________________________________________________\\
 
@@ -55,6 +44,8 @@ let flash_visible = false;
 let flash_active = false;
 let book_visible = false;
 let rank_visible = false;
+let skill_visible = false;
+let skill_active = false;
 //________________________________________________________________________________Artifact___________________________________________________________________________________\\
 
 // Add event listeners to color input fields
@@ -925,11 +916,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.getElementById("vurnability_drop").addEventListener("click", () => {
-	if (reroll_visible) {
-		reroll_visible = false;
+	if (vurnability_visible) {
+		vurnability_visible = false;
 		document.getElementById("vurnability").style.display = "none";
 	} else {
-		reroll_visible = true;
+		vurnability_visible = true;
 		document.getElementById("vurnability").style.display = "block";
 	}
 });
@@ -1074,5 +1065,52 @@ document.addEventListener('DOMContentLoaded', () => {
 				chrome.storage.local.set({ activeSkills: next });
 			});
 		});
+	});
+});
+
+
+document.getElementById("skill_drop").addEventListener("click", () => {
+	if (skill_visible) {
+		skill_visible = false;
+		document.getElementById("skill").style.display = "none";
+	} else {
+		skill_visible = true;
+		document.getElementById("skill").style.display = "block";
+	}
+});
+const skill_ = document.getElementById("skill_active");
+// Listen for changes on the checkbox
+skill_.addEventListener("change", () => {
+	if (skill_.checked) {
+		skill_active = true;
+		// Add any additional actions you want to trigger when the switch is on
+	} else {
+		skill_active = false;
+		// Add any additional actions you want to trigger when the switch is off
+	}
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+	// Load the saved state from localStorage when the page loads
+	if (localStorage.getItem("skill_state") === "true") {
+		skill_.checked = true;
+	} else {
+		skill_.checked = false;
+	}
+
+	// Save the state to localStorage whenever the switch is toggled
+	skill_.addEventListener("change", () => {
+		const isChecked_skill = skill_.checked;
+		localStorage.setItem("skill_state", isChecked_skill);
+
+		// Communicate the state to the content script
+		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+			chrome.tabs.sendMessage(tabs[0].id, {
+				Skill: isChecked_skill,
+			});
+		});
+	});
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.tabs.sendMessage(tabs[0].id, { Skill: skill_.checked });
 	});
 });
