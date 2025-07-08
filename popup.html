@@ -15,10 +15,255 @@
 			<br />
 		</center>
 		<br />
+		<div id="Summon_all_drop" class="drop_down">
+			<h3>
+				Summon All <b style="font-size: x-large"> ↓</b>
+				<span class="rank">(Recommended)</span>
+			</h3>
+		</div>
+		<div id="Summon_all" style="display: none" class="menu">
+			<br />
+			<span>on/off</span>
+			<label class="switch">
+				<input type="checkbox" id="Summon_active" />
+				<span class="slider round"></span>
+			</label>
+			<br /><br /><br />
+		</div>
+		<br />
+		<br />
+		<div id="Reroll_drop" class="drop_down">
+			<h3>
+				Automatic Reroll <b style="font-size: x-large"> ↓</b>
+				<span class="rank"
+					>(Recommended) (customizable)</span
+				>
+			</h3>
+		</div>
+		<div id="Auto_reroll" style="display: none" class="menu">
+			<br />
+			<span>on/off</span>
+			<label class="switch">
+				<input type="checkbox" id="reroll_active" />
+				<span class="slider round"></span>
+			</label>
+			<h1>Allowed Units</h1>
+			<div class="unit_list">
+				<img
+					src="assets/druid_naki_150x150-Dy3dTs4F.png"
+					height="83.5"
+					style="margin-right: 10px; margin-bottom: 10px"
+					data-value="druid-naki"
+					class="img_unit checked"
+				/>
+				<img
+					src="assets/guard_naki_150x150-BPH0nTCY.png"
+					height="83.5"
+					style="margin-right: 10px; margin-bottom: 10px"
+					data-value="guard-naki"
+					class="img_unit checked"
+				/>
+				<img
+					src="assets/spotter_naki_150x150-CEXxufX8.png"
+					height="83.5"
+					style="margin-right: 10px; margin-bottom: 10px"
+					data-value="spotter-naki"
+					class="img_unit checked"
+				/>
+				<img
+					src="assets/forest_spirit_150x150-Bq6dqDOP.png"
+					height="83.5"
+					style="margin-right: 10px; margin-bottom: 10px"
+					data-value="forest-spirit"
+					class="img_unit checked"
+				/>
+				<img
+					src="assets/grass_spirit_150x150-9m38q5XS.png"
+					height="83.5"
+					style="margin-right: 10px; margin-bottom: 10px"
+					data-value="grass-spirit"
+					class="img_unit checked"
+				/>
+				<img
+					src="assets/elder_spirit_150x150-BaXJe_KL.png"
+					height="83.5"
+					style="margin-right: 10px; margin-bottom: 10px"
+					data-value="elder-spirit"
+					class="img_unit checked"
+				/>
+				<img
+					src="assets/nyxi_150x150-DHpOouWm.png"
+					height="83.5"
+					style="margin-right: 10px; margin-bottom: 10px"
+					data-value="nyxi"
+					class="img_unit checked"
+				/>
+				<img
+					src="assets/ranax_150x150-CPDNhZsU.png"
+					height="83.5"
+					style="margin-right: 10px; margin-bottom: 10px"
+					data-value="ranax"
+					class="img_unit checked"
+				/>
+				<img
+					src="assets/pangoan_150x150-BB3L_Si5.png"
+					height="83.5"
+					style="margin-right: 10px; margin-bottom: 10px"
+					data-value="pangoan"
+					class="img_unit checked"
+				/>
+			</div>
+			<h4>note : blue border = unit selected</h4>
+			<h1>Minimum Recruiting Allowed</h1>
+			<select id="recruitingSelect">
+				<option value="0">lvl 0</option>
+				<option value="1">lvl 1</option>
+				<option value="2">lvl 2</option>
+				<option value="3">lvl 3</option>
+				<option value="4">lvl 4</option>
+				<option value="5">lvl 5</option>
+				<option value="6">lvl 6</option>
+				<option value="7">lvl 7</option>
+				<option value="8">lvl 8</option>
+				<option value="9">lvl 9</option>
+				<option value="10">lvl 10</option>
+				<option value="11">lvl 11</option>
+			</select>
+			<h1>Minimum Mining Allowed</h1>
+			<select id="miningSelect">
+				<option value="0">lvl 0</option>
+				<option value="1">lvl 1</option>
+				<option value="2">lvl 2</option>
+				<option value="3">lvl 3</option>
+				<option value="4">lvl 4</option>
+				<option value="5">lvl 5</option>
+				<option value="6">lvl 6</option>
+				<option value="7">lvl 7</option>
+				<option value="8">lvl 8</option>
+				<option value="9">lvl 9</option>
+				<option value="10">lvl 10</option>
+				<option value="11">lvl 11</option>
+			</select>
+			<br /><br /><br />
+		</div>
+		<br />
+		<br />
+		<div id="flash_drop" class="drop_down">
+			<h3>
+				flash island <b style="font-size: x-large"> ↓</b>
+				<span class="rank">(Recommended)</span>
+			</h3>
+		</div>
+		<div id="flash" style="display: none" class="menu">
+			<br />
+			<span>on/off</span>
+			<label class="switch">
+				<input type="checkbox" id="flash_active" />
+				<span class="slider round"></span>
+			</label>
+			<br /><br /><br />
+		</div>
+		<br />
+		<br />
+        <div id="skill_drop" class="drop_down">
+            <h3>
+                Automatic skill tree <b style="font-size: x-large"> ↓</b>
+                <span class="rank">(Recommended) (customizable)</span>
+            </h3>
+        </div>
+        <div id="skill" style="display: none" class="menu">
+            <br />
+            <span>on/off</span>
+            <label class="switch">
+                <input type="checkbox" id="skill_active" />
+                <span class="slider round"></span>
+            </label>
+            <div class="skill-buttons">
+                <!-- Attack Skills -->
+                <button class="skill-btn" data-skill-id="0" data-type="sword">⚔️ Battle Force</button>
+                <button class="skill-btn" data-skill-id="1" data-type="sword">⚔️ Strength Boost</button>
+                <button class="skill-btn" data-skill-id="3" data-type="sword">⚔️ Strength Boost</button>
+                <button class="skill-btn" data-skill-id="2" data-type="sword">⚔️ Speed Pill</button>
+                <button class="skill-btn" data-skill-id="4" data-type="sword">⚔️ Magic Sleep</button>
+                
+                <!-- Defense Skills -->
+                <button class="skill-btn" data-skill-id="10" data-type="shield">🛡️ Wall</button>
+                <button class="skill-btn" data-skill-id="11" data-type="shield">🛡️ Defense Boost</button>
+                <button class="skill-btn" data-skill-id="13" data-type="shield">🛡️ Defense Boost</button>
+                <button class="skill-btn" data-skill-id="15" data-type="shield">🛡️ Defense Boost</button>
+                <button class="skill-btn" data-skill-id="12" data-type="shield">🛡️ Healing</button>
+                <button class="skill-btn" data-skill-id="14" data-type="shield">🛡️ Healing</button>
+                <button class="skill-btn" data-skill-id="16" data-type="shield">🛡️ Healing</button>
+                <button class="skill-btn" data-skill-id="17" data-type="shield">🛡️ Modified Plague</button>
+                
+                <!-- Utility Skills -->
+                <button class="skill-btn" data-skill-id="20" data-type="potion">⚗️ Soul Mage</button>
+                <button class="skill-btn" data-skill-id="21" data-type="potion">⚗️ Recruitment Boost</button>
+                <button class="skill-btn" data-skill-id="22" data-type="potion">⚗️ Recruitment Boost</button>
+                <button class="skill-btn" data-skill-id="23" data-type="potion">⚗️ Recruitment Boost</button>
+                <button class="skill-btn" data-skill-id="24" data-type="potion">⚗️ Recruitment Boost</button>
+                <button class="skill-btn" data-skill-id="25" data-type="potion">⚗️ Recruitment Boost</button>
+                <button class="skill-btn" data-skill-id="26" data-type="potion">⚗️ Spotters</button>
+            </div>
+            <br /><br /><br />
+        </div>
+		<br />
+		<br />
+		<div id="Search_user_drop" class="drop_down">
+			<h3>
+				Search Leaderboard <b style="font-size: x-large"> ↓</b>
+				<span class="rank">(Recommended)</span>
+			</h3>
+		</div>
+		<div id="Search_user" style="display: none" class="menu">
+			<br />
+			<span>on/off</span>
+			<label class="switch">
+				<input type="checkbox" id="Search_active" />
+				<span class="slider round"></span>
+			</label>
+			<br /><br /><br />
+		</div>
+		<br />
+		<br />
+		<div id="vurnability_drop" class="drop_down">
+			<h3>
+				show unit vulnerability <b style="font-size: x-large"> ↓</b>
+				<span class="rank">(Recommended)</span>
+			</h3>
+		</div>
+		<div id="vurnability" style="display: none" class="menu">
+			<br />
+			<span>on/off</span>
+			<label class="switch">
+				<input type="checkbox" id="vurnability_active" />
+				<span class="slider round"></span>
+			</label>
+			<br /><br /><br />
+		</div>
+		<br />
+		<br />
+        <div id="rank_drop" class="drop_down">
+            <h3>
+                Player Rank Display <b style="font-size: x-large"> ↓</b>
+                <span class="rank">(Visual)</span>
+            </h3>
+        </div>
+        <div id="rank" style="display: none" class="menu">
+            <br />
+            <span>on/off</span>
+            <label class="switch">
+                <input type="checkbox" id="rank_active" />
+                <span class="slider round"></span>
+            </label>
+            <br /><br /><br />
+        </div>
+		<br />
+		<br />
 		<div id="arti_drop" class="drop_down">
 			<h3>
 				Artifact Color <b style="font-size: x-large"> ↓</b>
-				<span class="rank">(Recommended) (customizable)</span>
+				<span class="rank">(Recommended) (customizable) (Visual)</span>
 			</h3>
 		</div>
 		<div id="Artifact_color" style="display: none" class="menu">
@@ -52,11 +297,12 @@
 			<input type="color" id="fillColor_luck" value="#8d36ff" />
 			<br />
 		</div>
-		<br /><br />
+		<br />
+		<br />
 		<div id="pfp_drop" class="drop_down">
 			<h3>
 				Fake pfp <b style="font-size: x-large"> ↓</b>
-				<span class="rank">(customizable)</span>
+				<span class="rank">(customizable) (Visual)</span>
 			</h3>
 		</div>
 		<div id="custom_pfp" style="display: none" class="menu">
@@ -248,11 +494,12 @@
 				/>
 			</div>
 		</div>
-		<br /><br />
+		<br />
+		<br />
 		<div id="hide_txt_drop" class="drop_down">
 			<h3>
 				hide dominion menu text <b style="font-size: x-large"> ↓</b>
-				<span class="rank">(Recommended)</span>
+				<span class="rank">(Recommended) (Visual)</span>
 			</h3>
 		</div>
 		<div id="hide_txt" style="display: none" class="menu">
@@ -266,187 +513,6 @@
 		</div>
 		<br />
 		<br />
-		<div id="Search_user_drop" class="drop_down">
-			<h3>
-				Search Leaderboard <b style="font-size: x-large"> ↓</b>
-				<span class="rank">(Recommended)</span>
-			</h3>
-		</div>
-		<div id="Search_user" style="display: none" class="menu">
-			<br />
-			<span>on/off</span>
-			<label class="switch">
-				<input type="checkbox" id="Search_active" />
-				<span class="slider round"></span>
-			</label>
-			<br /><br /><br />
-		</div>
-		<br />
-		<br />
-		<div id="Summon_all_drop" class="drop_down">
-			<h3>
-				Summon All <b style="font-size: x-large"> ↓</b>
-				<span class="rank">(Beta)</span>
-			</h3>
-		</div>
-		<div id="Summon_all" style="display: none" class="menu">
-			<br />
-			<span>on/off</span>
-			<label class="switch">
-				<input type="checkbox" id="Summon_active" />
-				<span class="slider round"></span>
-			</label>
-			<br /><br /><br />
-		</div>
-		<br />
-		<br />
-		<div id="Reroll_drop" class="drop_down">
-			<h3>
-				Automatic Reroll <b style="font-size: x-large"> ↓</b>
-				<span class="rank"
-					>(Beta) (customizable)</span
-				>
-			</h3>
-		</div>
-		<div id="Auto_reroll" style="display: none" class="menu">
-			<br />
-			<span>on/off</span>
-			<label class="switch">
-				<input type="checkbox" id="reroll_active" />
-				<span class="slider round"></span>
-			</label>
-			<h1>Allowed Units</h1>
-			<div class="unit_list">
-				<img
-					src="assets/druid_naki_150x150-Dy3dTs4F.png"
-					height="83.5"
-					style="margin-right: 10px; margin-bottom: 10px"
-					data-value="druid-naki"
-					class="img_unit checked"
-				/>
-				<img
-					src="assets/guard_naki_150x150-BPH0nTCY.png"
-					height="83.5"
-					style="margin-right: 10px; margin-bottom: 10px"
-					data-value="guard-naki"
-					class="img_unit checked"
-				/>
-				<img
-					src="assets/spotter_naki_150x150-CEXxufX8.png"
-					height="83.5"
-					style="margin-right: 10px; margin-bottom: 10px"
-					data-value="spotter-naki"
-					class="img_unit checked"
-				/>
-				<img
-					src="assets/forest_spirit_150x150-Bq6dqDOP.png"
-					height="83.5"
-					style="margin-right: 10px; margin-bottom: 10px"
-					data-value="forest-spirit"
-					class="img_unit checked"
-				/>
-				<img
-					src="assets/grass_spirit_150x150-9m38q5XS.png"
-					height="83.5"
-					style="margin-right: 10px; margin-bottom: 10px"
-					data-value="grass-spirit"
-					class="img_unit checked"
-				/>
-				<img
-					src="assets/elder_spirit_150x150-BaXJe_KL.png"
-					height="83.5"
-					style="margin-right: 10px; margin-bottom: 10px"
-					data-value="elder-spirit"
-					class="img_unit checked"
-				/>
-				<img
-					src="assets/nyxi_150x150-DHpOouWm.png"
-					height="83.5"
-					style="margin-right: 10px; margin-bottom: 10px"
-					data-value="nyxi"
-					class="img_unit checked"
-				/>
-				<img
-					src="assets/ranax_150x150-CPDNhZsU.png"
-					height="83.5"
-					style="margin-right: 10px; margin-bottom: 10px"
-					data-value="ranax"
-					class="img_unit checked"
-				/>
-				<img
-					src="assets/pangoan_150x150-BB3L_Si5.png"
-					height="83.5"
-					style="margin-right: 10px; margin-bottom: 10px"
-					data-value="pangoan"
-					class="img_unit checked"
-				/>
-			</div>
-			<h4>note : blue border = unit selected</h4>
-			<h1>Minimum Recruiting Allowed</h1>
-			<select id="recruitingSelect">
-				<option value="0">lvl 0</option>
-				<option value="1">lvl 1</option>
-				<option value="2">lvl 2</option>
-				<option value="3">lvl 3</option>
-				<option value="4">lvl 4</option>
-				<option value="5">lvl 5</option>
-				<option value="6">lvl 6</option>
-				<option value="7">lvl 7</option>
-				<option value="8">lvl 8</option>
-				<option value="9">lvl 9</option>
-				<option value="10">lvl 10</option>
-				<option value="11">lvl 11</option>
-			</select>
-			<h1>Minimum Mining Allowed</h1>
-			<select id="miningSelect">
-				<option value="0">lvl 0</option>
-				<option value="1">lvl 1</option>
-				<option value="2">lvl 2</option>
-				<option value="3">lvl 3</option>
-				<option value="4">lvl 4</option>
-				<option value="5">lvl 5</option>
-				<option value="6">lvl 6</option>
-				<option value="7">lvl 7</option>
-				<option value="8">lvl 8</option>
-				<option value="9">lvl 9</option>
-				<option value="10">lvl 10</option>
-				<option value="11">lvl 11</option>
-			</select>
-			<br /><br /><br />
-		</div>
-		<br /><br />
-		<div id="flash_drop" class="drop_down">
-			<h3>
-				flash island <b style="font-size: x-large"> ↓</b>
-				<span class="rank">(Recommended)</span>
-			</h3>
-		</div>
-		<div id="flash" style="display: none" class="menu">
-			<br />
-			<span>on/off</span>
-			<label class="switch">
-				<input type="checkbox" id="flash_active" />
-				<span class="slider round"></span>
-			</label>
-			<br /><br /><br />
-		</div>
-		<br /><br />
-		<div id="vurnability_drop" class="drop_down">
-			<h3>
-				show unit vulnerability <b style="font-size: x-large"> ↓</b>
-				<span class="rank">(Recommended)</span>
-			</h3>
-		</div>
-		<div id="vurnability" style="display: none" class="menu">
-			<br />
-			<span>on/off</span>
-			<label class="switch">
-				<input type="checkbox" id="vurnability_active" />
-				<span class="slider round"></span>
-			</label>
-			<br /><br /><br />
-		</div>
-		<br /><br />
         <div id="book_drop" class="drop_down">
             <h3>
                 RiT wiki (lexicon) <b style="font-size: x-large"> ↓</b>
@@ -460,65 +526,6 @@
                 <input type="checkbox" id="book_active" />
                 <span class="slider round"></span>
             </label>
-            <br /><br /><br />
-        </div>
-		<br /><br />
-        <div id="rank_drop" class="drop_down">
-            <h3>
-                Player Rank Display <b style="font-size: x-large"> ↓</b>
-                <span class="rank">(Visual)</span>
-            </h3>
-        </div>
-        <div id="rank" style="display: none" class="menu">
-            <br />
-            <span>on/off</span>
-            <label class="switch">
-                <input type="checkbox" id="rank_active" />
-                <span class="slider round"></span>
-            </label>
-            <br /><br /><br />
-        </div>
-		<br /><br />
-        <div id="skill_drop" class="drop_down">
-            <h3>
-                Automatic skill tree <b style="font-size: x-large"> ↓</b>
-                <span class="rank">(Recommended)</span>
-            </h3>
-        </div>
-        <div id="skill" style="display: none" class="menu">
-            <br />
-            <span>on/off</span>
-            <label class="switch">
-                <input type="checkbox" id="skill_active" />
-                <span class="slider round"></span>
-            </label>
-            <div class="skill-buttons">
-                <!-- Attack Skills -->
-                <button class="skill-btn" data-skill-id="0" data-type="sword">⚔️ Battle Force</button>
-                <button class="skill-btn" data-skill-id="1" data-type="sword">⚔️ Strength Boost</button>
-                <button class="skill-btn" data-skill-id="3" data-type="sword">⚔️ Strength Boost</button>
-                <button class="skill-btn" data-skill-id="2" data-type="sword">⚔️ Speed Pill</button>
-                <button class="skill-btn" data-skill-id="4" data-type="sword">⚔️ Magic Sleep</button>
-                
-                <!-- Defense Skills -->
-                <button class="skill-btn" data-skill-id="10" data-type="shield">🛡️ Wall</button>
-                <button class="skill-btn" data-skill-id="11" data-type="shield">🛡️ Defense Boost</button>
-                <button class="skill-btn" data-skill-id="13" data-type="shield">🛡️ Defense Boost</button>
-                <button class="skill-btn" data-skill-id="15" data-type="shield">🛡️ Defense Boost</button>
-                <button class="skill-btn" data-skill-id="12" data-type="shield">🛡️ Healing</button>
-                <button class="skill-btn" data-skill-id="14" data-type="shield">🛡️ Healing</button>
-                <button class="skill-btn" data-skill-id="16" data-type="shield">🛡️ Healing</button>
-                <button class="skill-btn" data-skill-id="17" data-type="shield">🛡️ Modified Plague</button>
-                
-                <!-- Utility Skills -->
-                <button class="skill-btn" data-skill-id="20" data-type="potion">⚗️ Soul Mage</button>
-                <button class="skill-btn" data-skill-id="21" data-type="potion">⚗️ Recruitment Boost</button>
-                <button class="skill-btn" data-skill-id="22" data-type="potion">⚗️ Recruitment Boost</button>
-                <button class="skill-btn" data-skill-id="23" data-type="potion">⚗️ Recruitment Boost</button>
-                <button class="skill-btn" data-skill-id="24" data-type="potion">⚗️ Recruitment Boost</button>
-                <button class="skill-btn" data-skill-id="25" data-type="potion">⚗️ Recruitment Boost</button>
-                <button class="skill-btn" data-skill-id="26" data-type="potion">⚗️ Spotters</button>
-            </div>
             <br /><br /><br />
         </div>
         <br />
