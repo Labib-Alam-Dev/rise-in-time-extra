@@ -748,6 +748,12 @@ function insertSkillTreeButton() {
 			});
 		});
 
+		// Check if the title tag contains "⚔"
+		const titleTag = document.querySelector("title");
+		if (titleTag && titleTag.textContent.includes("⚔")) {
+			return; // Do not add the button if "⚔" is in the title tag
+		}
+
 		if (skillEnabled) {
 			container.appendChild(btn);
 		}

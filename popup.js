@@ -11,7 +11,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 		// const menuItems = document.querySelectorAll('.menu');
 		// menuItems.forEach(item => { item.style.display = 'block'; });
 		setTimeout(() => {
-
 			window.close();
 		}, 300);
 	}
