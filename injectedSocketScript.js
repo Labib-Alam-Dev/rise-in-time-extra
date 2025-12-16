@@ -41,6 +41,7 @@ function summonAllMain() {
 		).length === 0
 	) {
 		window.$socket.on("UPDATE_MAP", function updateCurrentMap(e) {
+			if (!e || !Array.isArray(e)) return;
 			currentMap = e;
 			let regionView = undefined
 			e.forEach((field) => {
